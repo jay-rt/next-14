@@ -9,3 +9,33 @@
   font-weight: bold;
   cursor: pointer;
 }
+
+.menu,
+.menulinks {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .links {
+    display: none;
+  }
+
+  .menu {
+    display: block;
+    cursor: pointer;
+  }
+
+  .menulinks {
+    position: absolute;
+    top: 100px;
+    right: 0;
+    width: 50%;
+    height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--bg);
+  }
+}
