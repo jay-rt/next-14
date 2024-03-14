@@ -37,7 +37,7 @@
   color: var(--text);
 }
 
-.brand {
+.brands {
   position: relative;
   width: 500px;
   height: 50px;
@@ -47,4 +47,29 @@
 .imgContainer {
   flex: 1;
   position: relative;
+}
+
+@media (max-width: 1024px) {
+  .home {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .imgContainer {
+    display: none;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 4rem;
+  }
+
+  .brands {
+    width: 100%;
+  }
 }

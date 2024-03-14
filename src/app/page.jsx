@@ -18,7 +18,7 @@ const HomePage = () => {
             Contact
           </button>
         </div>
-        <div className={styles.brand}>
+        <div className={styles.brands}>
           <Image src="/brands.png" alt="" fill />
         </div>
       </div>

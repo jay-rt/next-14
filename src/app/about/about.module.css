@@ -46,3 +46,21 @@
 .img {
   object-fit: contain;
 }
+
+@media (max-width: 768px) {
+  .about {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .imgContainer {
+    flex: none;
+    width: 100%;
+    height: 350px;
+  }
+
+  .boxes {
+    flex-direction: column;
+    gap: 50px;
+  }
+}
