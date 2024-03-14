@@ -18,6 +18,8 @@ const ContactPage = () => {
   // const a = Math.random();
   // console.log(a);
 
+  // console.log("let's see where it renders");
+
   return (
     <div className={styles.contact}>
       <div className={styles.imgContainer}>
