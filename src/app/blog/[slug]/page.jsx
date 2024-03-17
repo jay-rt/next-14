@@ -2,21 +2,24 @@ import Image from "next/image";
 import styles from "./singleblog.module.css";
 import PostAuthor from "@/components/author/PostAuthor";
 import { Suspense } from "react";
+import { getPost } from "@/lib/data";
 
-const getPost = async (slug) => {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`);
-  if (!res.ok) {
-    throw new Error("Error loading post");
-  }
+//LOADING DATA WITH AN API
+// const getPost = async (slug) => {
+//   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`);
+//   if (!res.ok) {
+//     throw new Error("Error loading post");
+//   }
 
-  return res.json();
-};
+//   return res.json();
+// };
 
-// const SingleBlogPage = ({ params, searchParams }) => {
-// console.log(params);
-// console.log(searchParams);
 const SingleBlogPage = async ({ params }) => {
   const { slug } = params;
+  //LOADING DATA FROM AN API
+  // const post = await getPost(slug);
+
+  //LOADING DATA WITHOUT AN API
   const post = await getPost(slug);
   return (
     <div className={styles.single}>
