@@ -1,10 +1,23 @@
 import Image from "next/image";
 import styles from "./singleblog.module.css";
+import PostAuthor from "@/components/author/PostAuthor";
+import { Suspense } from "react";
+
+const getPost = async (slug) => {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`);
+  if (!res.ok) {
+    throw new Error("Error loading post");
+  }
+
+  return res.json();
+};
 
 // const SingleBlogPage = ({ params, searchParams }) => {
 // console.log(params);
 // console.log(searchParams);
-const SingleBlogPage = () => {
+const SingleBlogPage = async ({ params }) => {
+  const { slug } = params;
+  const post = await getPost(slug);
   return (
     <div className={styles.single}>
       <div className={styles.imgContainer}>
@@ -16,7 +29,7 @@ const SingleBlogPage = () => {
         />
       </div>
       <div className={styles.textContainer}>
-        <h1 className={styles.title}>Title</h1>
+        <h1 className={styles.title}>{post.title}</h1>
         <div className={styles.detail}>
           <Image
             src="/noavatar.png"
@@ -25,19 +38,15 @@ const SingleBlogPage = () => {
             height={50}
             className={styles.avatar}
           />
-          <div className={styles.detailText}>
-            <span className={styles.detailTitle}>Author</span>
-            <span className={styles.detailValue}>Terry Jefferson</span>
-          </div>
+          <Suspense fallback={<div>Loading...</div>}>
+            <PostAuthor id={post.userId} />
+          </Suspense>
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Published</span>
             <span className={styles.detailValue}>01.01.2024</span>
           </div>
         </div>
-        <p className={styles.desc}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+        <p className={styles.desc}>{post.body}</p>
       </div>
     </div>
   );
