@@ -1,6 +1,9 @@
 import Image from "next/image";
 import styles from "./singleblog.module.css";
 
+// const SingleBlogPage = ({ params, searchParams }) => {
+// console.log(params);
+// console.log(searchParams);
 const SingleBlogPage = () => {
   return (
     <div className={styles.single}>
