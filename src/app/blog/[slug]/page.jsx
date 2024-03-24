@@ -23,33 +23,26 @@ const SingleBlogPage = async ({ params }) => {
   const post = await getPost(slug);
   return (
     <div className={styles.single}>
-      <div className={styles.imgContainer}>
-        <Image
-          src="https://images.pexels.com/photos/20367982/pexels-photo-20367982/free-photo-of-a-small-cabin-in-the-middle-of-a-forest.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-          alt=""
-          className={styles.img}
-          fill
-        />
-      </div>
+      {post.img && (
+        <div className={styles.imgContainer}>
+          <Image src={post.img} alt="" className={styles.img} fill />
+        </div>
+      )}
       <div className={styles.textContainer}>
         <h1 className={styles.title}>{post.title}</h1>
         <div className={styles.detail}>
-          <Image
-            src="/noavatar.png"
-            alt=""
-            width={50}
-            height={50}
-            className={styles.avatar}
-          />
           <Suspense fallback={<div>Loading...</div>}>
-            <PostAuthor id={post.userId} />
+            {/** Typecasting the userId to string using toHexString method */}
+            <PostAuthor id={post.userId.toHexString()} />
           </Suspense>
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Published</span>
-            <span className={styles.detailValue}>01.01.2024</span>
+            <span className={styles.detailValue}>
+              {post.createdAt.toString().slice(4, 16)}
+            </span>
           </div>
         </div>
-        <p className={styles.desc}>{post.body}</p>
+        <p className={styles.desc}>{post.desc}</p>
       </div>
     </div>
   );

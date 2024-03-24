@@ -1,5 +1,6 @@
-import { getAuthor } from "@/lib/data";
+import { getUser } from "@/lib/data";
 import styles from "./postauthor.module.css";
+import Image from "next/image";
 
 //LOADING DATA WITH AN API
 // const getAuthor = async (id) => {
@@ -18,11 +19,21 @@ const PostAuthor = async ({ id }) => {
   // const author = await getAuthor(id);
 
   //LOADING DATA WITHOUT AN API
-  const author = await getAuthor(id);
+  const author = await getUser(id);
+
   return (
     <div className={styles.author}>
-      <span className={styles.title}>Author</span>
-      <span className={styles.name}>{author.name}</span>
+      <Image
+        src={author.avatar ? author.avatar : "/noavatar.png"}
+        alt=""
+        width={50}
+        height={50}
+        className={styles.avatar}
+      />
+      <div className={styles.authorDesc}>
+        <span className={styles.title}>Author</span>
+        <span className={styles.name}>{author.username}</span>
+      </div>
     </div>
   );
 };
