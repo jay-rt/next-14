@@ -8,6 +8,11 @@ import styles from "./contact.module.css";
 //   ssr: false,
 // });
 
+export const metadata = {
+  title: "Contact",
+  description: "Contact description",
+};
+
 const ContactPage = () => {
   // const [isClient, setIsClient] = useState(false);
 
