@@ -19,7 +19,7 @@ const Card = ({ post }) => {
           />
         </div>
         <span className={styles.date}>
-          {post.createdAt.toLocaleDateString()}
+          {new Date(post.createdAt).toLocaleDateString()}
         </span>
       </div>
       <div className={styles.bottom}>
