@@ -39,7 +39,7 @@ const Links = ({ session }) => {
         ))}
         {session ? (
           <>
-            {session?.isAdmin && (
+            {session?.user?.isAdmin && (
               <NavLink link={{ title: "Admin", path: "/admin" }} />
             )}
             <form action={handleLogout}>

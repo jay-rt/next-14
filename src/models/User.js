@@ -16,11 +16,7 @@ const userSchema = new Schema(
       unique: true,
       max: 50,
     },
-    password: {
-      type: String,
-      required: true,
-      min: 8,
-    },
+    password: { type: String, min: 8 },
     avatar: { type: String },
     isAdmin: { type: Boolean, default: false },
   },
