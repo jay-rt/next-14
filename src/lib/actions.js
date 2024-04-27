@@ -2,6 +2,7 @@
 
 import Post from "@/models/Post";
 import connectToDB from "./utils";
+import { signIn, signOut } from "./auth";
 
 export const addPost = async (formData) => {
   const { title, desc, slug, userId } = Object.fromEntries(formData);
@@ -30,4 +31,12 @@ export const deletePost = async (formData) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const handleGithubLogin = async () => {
+  await signIn("github");
+};
+
+export const handleLogout = async () => {
+  await signOut();
 };
