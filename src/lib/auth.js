@@ -9,13 +9,14 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     async signIn({ user, account, profile }) {
       if (account.provider === "github") {
         connectToDB();
+        console.log(profile);
         try {
-          const existingUser = await User.findOne({ email: user.email });
+          const existingUser = await User.findOne({ email: profile.email });
           if (!existingUser) {
             const newUser = new User({
-              username: user.name,
-              email: user.email,
-              avatar: user.image,
+              username: profile.login,
+              email: profile.email,
+              avatar: profile.avatar_url,
             });
             await newUser.save();
           }
